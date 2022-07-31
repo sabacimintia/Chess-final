@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Document</title>
+</head>
+<body>
+    <img src="pic2.png">
+    <div class="nxt1">
+        <button class="button1">1</button>  
+    </div>
+    <div class="hr1"></div>
+
+
+    <div class="nxt2">
+       <button class="button2">2</button> 
+    </div>
+    <h5 class="pi">Personal information</h5>
+    <h5 class="ce">Chess experiance</h5>
+    <h3>Personal information</h3>
+    <h6>This is basic information fields</h6>
+
+
+    <form id="registration"  >
+        <div class="inputs">
+        <div>
+            <input type="text"  placeholder="Username" name = "username" class="input1" autocomplete="off"><span class="material-symbols-outlined">
+                add
+                </span>
+            <div id="error_username" class="error"></div>
+        </div>
+        
+        <div>
+            <input type="email"  placeholder="Email address" name="email" class="input3" autocomplete="off"><span class="material-symbols-outlined">
+                add
+                </span>
+            <div id="error_email" class="error"></div>
+        </div>
+        <div>
+            <input type="phone"  placeholder="Phone Number" name="phone" class="input4" autocomplete="off"><span class="material-symbols-outlined">
+                add
+                </span>
+            <div id="error_phone" class="error"></div>
+        </div>
+        <div>
+            <input type="text"  placeholder="Date of Birth" name="date" class="input5"autocomplete="off"><span class="material-symbols-outlined">
+                add
+                </span>
+            <div id="error_date" class="error"></div>
+        </div>
+    </div>
+
+       <button id="next">Submit</button>
+       
+    </form>
+    <div class="text">
+        or
+    </div>
+    <div class="next12">
+    <a href="index2.html"><button id="next1">Next</button></a>
+</div>
+    <a href="index.html"><button id="back">Back</button></a>
+
+    <script>
+
+            let registrationForm = document.getElementById('registration');
+            registrationForm.addEventListener('submit',function(e){
+            e.preventDefault();
+            
+            let errors = {};
+            let form = e.target;
+
+            let username = document.querySelector('[name = "username"]').value;
+            if(username.length < 8){
+                errors.username="მინიმუმ 8 სიმბოლო არის საჭირო";
+            }
+           
+            let email = document.querySelector('[name="email"]').value;
+            if(email.length < 20){
+                errors.email="შეავსეთ ემაილი";
+            }
+            let phone = document.querySelector('[name="phone"]').value;
+            if(phone.length < 4 ){
+                errors.phone="შეავსეთ ნომერი";
+            }
+            let date = document.querySelector('[name="date"]').value;
+            if(date.length < 8 ){
+                errors.date="შეავსეთ დაბადების დღე";
+            }
+
+            for (let show in errors){
+                let showPlacedolder = document.getElementById('error_' + show);
+                if(showPlacedolder) {
+                    showPlacedolder.textContent = errors[show];
+                }
+                form.querySelector('[name = "'+ show +'"]').classList.add('error');
+            }
+            console.log(errors)
+
+        })
+
+
+
+
+
+
+
+    </script>
+ 
+</body>
+</html>
